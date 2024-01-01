@@ -10,49 +10,55 @@ root.configure(bg='#f0f1f5')
 
 
 def BMI():
-    h = float(Height.get())
-    w = float(Weight.get())
+    tinggi = float(Height.get())
+    berat = float(Weight.get())
 
-    m = h / 100
-    bmi = round(float(w / m**2), 1)
+    massa = tinggi / 100
+    bmi = round(float(berat / massa**2), 1)
     label1.config(text=bmi)
 
     if bmi <= 18.5:
         label2.config(text='Kurus!')
-        label3.config(text='Berat badan Anda lebih rendah dari normal!')
+        label3.config(text='Berat badan Anda lebih rendah \n dari normal!')
     elif 18.5 < bmi <= 25:
         label2.config(text='Normal!')
         label3.config(text='Ini menunjukkan bahwa Anda sehat!')
     elif 25 < bmi <= 30:
-        label2.config(text='Overweight!')
+        label2.config(text='Gemuk!')
         label3.config(
-            text='Ini menunjukkan bahwa seseorang \n sedikit overweight. \n Seorang dokter mungkin menyarankan untuk \n menurunkan berat badan untuk alasan kesehatan!')
+            text='Ini menunjukkan bahwa Anda \n Gemuk!')
     else:
         label2.config(text='Obesitas!')
         label3.config(
             text='Kesehatan mungkin berisiko. Jika tidak \n menurunkan berat badan!')
 
 
-# Icon
+# Icon judul
 image_icon = tk.PhotoImage(file='img/icon.png')
 root.iconphoto(False, image_icon)
 
-# Top
+# Judul Heading
 top = tk.PhotoImage(file="img/top.png")
 top_image = tk.Label(root, image=top, background="#f0f1f5")
 top_image.place(x=-10, y=-10)
 
-# Bottom box
+# label tinggi dan berat
+tk.Label(root, text='Tinggi (cm)', font='arial 12 bold').place(x=80, y=75)
+tk.Label(root, text='Berat (kg)', font='arial 12 bold').place(x=310, y=75)
+
+# Frame Bawah
 tk.Label(root, width=72, height=18, bg="lightblue").pack(side=tk.BOTTOM)
 
-# Two boxes
+
+# Kotak Slider
 box = tk.PhotoImage(file='img/box.png')
 tk.Label(root, image=box).place(x=20, y=100)
 tk.Label(root, image=box).place(x=240, y=100)
 
-# Scale
+
+# Ukuran
 scale = tk.PhotoImage(file='img/scale.png')
-tk.Label(root, image=scale, bg='lightblue').place(x=20, y=310)
+tk.Label(root, image=scale, bg='lightblue').place(x=20, y=315)
 
 # Slider1
 current_value = tk.DoubleVar()
@@ -70,7 +76,7 @@ def slider_changed(event):
     resized_image = img.resize((50, 10 + size))
     photo2 = ImageTk.PhotoImage(resized_image)
     secondimage.config(image=photo2)
-    secondimage.place(x=70, y=550 - size)
+    secondimage.place(x=70, y=560 - size)
     secondimage.image = photo2
 
 
@@ -111,18 +117,18 @@ Weight.set(get_current_value2())
 
 # Man image
 secondimage = tk.Label(root, bg='lightblue')
-secondimage.place(x=70, y=530)
+secondimage.place(x=70, y=550)
 
-tk.Button(root, text='Lihat Laporan', width=15, height=2, font='arial 10 bold', bg='#1f6e68', fg='white',
-          command=BMI).place(x=280, y=340)
+tk.Button(root, text='Lihat Laporan', width=20, height=2, font='arial 10 bold', bg='#1f6e68', fg='white',
+          command=BMI).place(x=230, y=320)
 
-label1 = tk.Label(root, font='arial 60 bold', bg='lightblue', fg='#fff')
-label1.place(x=125, y=305)
+label1 = tk.Label(root, font='arial 44 bold', bg='lightblue', fg='#fff')
+label1.place(x=245, y=380)
 
-label2 = tk.Label(root, font='arial 20 bold', bg='lightblue', fg='#3b3a3a')
-label2.place(x=280, y=430)
+label2 = tk.Label(root, font='arial 16 bold', bg='lightblue', fg='#3b3a3a')
+label2.place(x=270, y=470)
 
-label3 = tk.Label(root, font='arial 10 bold', bg='lightblue', fg='#fff')
+label3 = tk.Label(root, font='arial 10 bold', bg='lightblue', fg='#3b3a3a')
 label3.place(x=200, y=500)
 
 root.mainloop()
