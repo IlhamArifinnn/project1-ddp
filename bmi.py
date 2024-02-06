@@ -89,7 +89,7 @@ slider.place(x=80, y=250)
 # Slider2
 current_value2 = tk.DoubleVar()
 
-
+    
 def get_current_value2():
     return '{: .2f}'.format(current_value2.get())
 
